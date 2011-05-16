@@ -30,7 +30,7 @@ done
 
 SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/after.st")
 
-$STONE_CREATOR/create-stone.sh -n $BUILD_NAME -d $WORKSPACE $FRESH_EXTENT -s 200000 -t 500000 -u jenkins
+$STONE_CREATOR/create-stone.sh -n $BUILD_NAME -d $WORKSPACE $FRESH_EXTENT -s 200000 -t 50000 -u jenkins
 . $WORKSPACE/env
 
 rm $WORKSPACE/script.st
@@ -43,7 +43,7 @@ for FILE in "${SCRIPTS[@]}" ; do
 	#eval "echo \"$(< $FILE )\"" >> $WORKSPACE/$BUILD_NAME-script.st
 done 
 
-startstone $BUILD_NAME -z $GEMSTONE_SYS_CONF -l $WORKSPACE/log.txt
+startstone $BUILD_NAME -z $GEMSTONE_SYS_CONF -l $WORKSPACE/$BUILD_NAME-log.txt
 
 $GEMSTONE/bin/topaz -l -T200000 < $WORKSPACE/$BUILD_NAME-script.st
 STATE=$?
