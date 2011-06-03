@@ -30,7 +30,7 @@ done
 
 SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/after.st")
 
-$STONE_CREATOR/create-stone.sh -n $BUILD_NAME -d $WORKSPACE -u jenkins $FRESH_EXTENT -s 200000 -t 50000
+$STONE_CREATOR/bin/create-stone.sh -n $BUILD_NAME -d $WORKSPACE -u jenkins $FRESH_EXTENT -s 200000 -t 50000
 . $WORKSPACE/env
 
 rm $WORKSPACE/script.st
