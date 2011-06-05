@@ -28,20 +28,23 @@ while getopts ":i:n:s:f?" OPT ; do
    esac
 done
 
-SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/after.st")
+#SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/after.st")
 
 $STONE_CREATOR/bin/create-stone.sh -n $BUILD_NAME -d $WORKSPACE -u jenkins $FRESH_EXTENT -s 200000 -t 50000
 . $WORKSPACE/env
 
-rm $WORKSPACE/script.st
+#rm $WORKSPACE/script.st
 
 eval "echo \"$(< $SCRIPTS_PATH/before.st )\"" > $WORKSPACE/$BUILD_NAME-script.st
 
 for FILE in "${SCRIPTS[@]}" ; do
 	echo $FILE
-	cat $FILE >> $WORKSPACE/$BUILD_NAME-script.st
-	#eval "echo \"$(< $FILE )\"" >> $WORKSPACE/$BUILD_NAME-script.st
+        (echo "run"
+	cat $FILE
+	echo "%") >> $WORKSPACE/$BUILD_NAME-script.st
 done 
+
+cat $SCRIPTS_PATH/after.st >> $WORKSPACE/$BUILD_NAME-script.st
 
 startstone $BUILD_NAME -z $GEMSTONE_SYS_CONF -l $WORKSPACE/$BUILD_NAME-log.txt
 

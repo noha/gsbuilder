@@ -1,4 +1,3 @@
-run
 Gofer new
    gemsource: 'MetacelloRepository';
    package: 'ConfigurationOfPier2';
@@ -6,4 +5,3 @@ Gofer new
 MCPlatformSupport commitOnAlmostOutOfMemoryDuring: [
    (Smalltalk at: #ConfigurationOfPier2) project latestVersion load ]
 
-%

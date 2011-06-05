@@ -1,4 +1,3 @@
-run
 Gofer new
 	squeaksource: 'Seaside30Addons';
 	package: 'Seaside-REST-Core' constraint: [ :version |
@@ -6,4 +5,3 @@ Gofer new
 	package: 'Seaside-GemStone-REST-Core' constraint: [ :version |
                         version versionNumber = 2 ];
 	load.
-%
