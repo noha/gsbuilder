@@ -1,7 +1,7 @@
 set user DataCurator pass swordfish gems $BUILD_NAME
 display oops
 
-iferror where
+iferror exit 3
 
 login
 
